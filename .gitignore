@@ -1,0 +1,10 @@
+
+# node_modules
+/node_modules
+
+# vscode 
+/.vscode
+
+# lock文件
+package-lock.json
+yarn.lock
