@@ -1,31 +1,31 @@
 /** @format */
 
-const redis = require("redis");
-const config = require("./redisConf");
+const redis = require('redis');
+const config = require('./redisConf');
 // const { host, port } = config;
 
 const client = redis.createClient(config);
 
-client.on("ready", () => {
-  console.log("redis is ready");
+client.on('ready', () => {
+  console.log('redis is ready');
 });
 
-client.on("end", (err) => {
-  console.log("end", err);
+client.on('end', (err) => {
+  console.log('end', err);
 });
 
-client.on("error", (err) => {
+client.on('error', (err) => {
   console.log(err);
 });
 
-client.on("connect", () => {
-  console.log("redis connect success!");
+client.on('connect', () => {
+  console.log('redis connect success!');
 });
 
 const setValue = (key, value) => {
-  if (typeof value === "string") {
+  if (typeof value === 'string') {
     client.set(key, value);
-  } else if (typeof value === "object") {
+  } else if (typeof value === 'object') {
     for (let item in value) {
       client.hmset(key, item, value[item], redis.print);
     }
@@ -48,7 +48,7 @@ const getValue = (key) => {
 // 获取hash
 const getHValue = (key) => {
   return new Promise((resolve, reject) => {
-    client.hgetall(key, function(err, value) {
+    client.hgetall(key, function (err, value) {
       if (err) {
         reject(err);
       } else {

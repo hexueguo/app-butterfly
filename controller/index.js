@@ -1,9 +1,10 @@
 /** @format */
 
-var welcome = require("./welcome");
-var users = require("./users");
+var welcome = require('./welcome');
+var users = require('./users');
 
-var controller = {};
+const controller = {};
+
 controller.index = welcome;
 controller.users = users;
 
